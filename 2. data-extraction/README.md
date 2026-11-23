@@ -1,65 +1,122 @@
 # M2 | PDF Document Assessment and Password Recovery
 
-This folder contains the evidence for Milestone 2 of the NetworkWalks Week 4 exercise. The objective was to assess the protection applied to the three PDF lab reports identified during the preceding milestone.
-
-> **Sensitive evidence warning:** The screenshots may show patient-style document content, recovered passwords, filenames or other identifying details. Do not publish these images unredacted. The actual document contents and passwords are intentionally omitted from this README.
+This folder contains the supporting evidence for Milestone 2 of the NetworkWalks Week 4 exercise. The objective was to assess the protection applied to the three PDF reports identified during the preceding milestone, recover access to the supplied files where possible, and verify the results by opening each document.
 
 ## 1. Objective
 
-Assess whether the three supplied password-protected exercise PDFs could be opened after offline password recovery. The work was performed against the exercise files, not by attempting to recover passwords for unrelated accounts or systems.
+Assess the password protection applied to the three supplied PDF reports using offline password-auditing techniques. The work was limited to the files provided for this fictional training exercise.
 
 ## 2. Tools and process
 
-- **John the Ripper:** Used for offline password recovery after extracting the PDF password hashes.
-- **PDF hash extraction utility:** Used to convert the supplied PDF protection data into a format suitable for password-auditing tools.
-- **NetworkWalks password tool:** An initial attempt was recorded for the third document; the screenshot set records that this attempt did not succeed.
-- **PDF reader:** Used to verify that the recovered passwords opened the exercise documents.
+- **PDF hash extraction utility:** Extracted password-verification data from each supplied PDF for offline auditing.
+- **John the Ripper:** Used to perform password-recovery attempts against the extracted hashes.
+- **NetworkWalks password tool:** Used for an initial attempt against the third document.
+- **PDF reader:** Used to verify whether each recovered password successfully opened its corresponding document.
 
-The assessment followed this high-level process:
+The workflow was:
 
-1. Work with the three PDF files obtained during the exercise.
-2. Extract a password hash from each file.
-3. Attempt password recovery using the permitted training tools.
-4. Record successful and unsuccessful attempts.
-5. Verify document access by opening each supplied PDF.
-6. Keep recovered passwords and document contents out of public notes.
+1. Obtain the three PDF reports identified during the exercise.
+2. Extract the password hash from each PDF.
+3. Attempt offline password recovery using the available training tools.
+4. Record the outcome of each attempt.
+5. Open each PDF using the recovered password to verify access.
+6. Document the evidence and security implications.
 
-## 3. Evidence index
+## 3. Screenshot evidence map
 
-| Evidence | Screenshot filename | Recorded activity |
-|---|---|---|
-| E-12 | 1. patient_report_1.pdf extracted hash.png | Hash extraction for report 1 |
-| E-13 | 1.1 patient_record_1_password.png | Password-recovery result for report 1 |
-| E-14 | 1.11 patient_record_1_openpdf.png | Report 1 opened successfully |
-| E-15 | 2. patient_report_2.pdf extracted hash.png | Hash extraction for report 2 |
-| E-16 | 2.1 patient_record_2_password.png | Password-recovery result for report 2 |
-| E-17 | 2.11 patient_record_2_openpdf.png | Report 2 opened successfully |
-| E-18 | 3.1 patient_record_3_password_cracking_failed_network_walkstool.png | Initial password-recovery attempt did not succeed |
-| E-19 | 3.1. patient_report_3.pdf extracted hash.png | Hash extraction for report 3 |
-| E-20 | 3.111 patient_record_3_password_cracking_using_john works.png | Successful recovery using John the Ripper |
-| E-21 | 3.1111 patient_record_3_openpdf.png | Report 3 opened successfully |
+The screenshots are embedded below in the same sequence as their existing filenames and numbering. Each caption explains what the evidence demonstrates and how it contributes to the milestone.
 
-## 4. Outcome
+### Report 1 — Hash extraction, password recovery and document access
 
-The user reported successful completion of Milestone 2, and the evidence set records successful opening of all three documents. The third document required a different approach after the initial NetworkWalks tool attempt failed; John the Ripper was subsequently used successfully.
+**Evidence 1.** Extracting the password hash from the first PDF report.
 
-The recovered passwords are not included here. Password recovery demonstrates that document-level protection can be undermined when passwords are weak or guessable and an attacker obtains a copy of the protected file.
+![Evidence 1 - Report 1 hash extraction](./1.%20patient_report_1.pdf%20extracted%20hash.png)
 
-## 5. Security implications
+**Evidence 1.1.** Password-recovery result for the first report.
 
-PDF password protection should not be treated as a substitute for application authorisation. If sensitive documents can be obtained by an unauthorised user, weak document passwords may allow offline recovery without further interaction with the application.
+![Evidence 1.1 - Report 1 password recovery](./1.1%20patient_record_1_password.png)
 
-Recommended controls are documented under finding F-02 in the [main M4 report](../README.md). In summary:
+**Evidence 1.11.** Verification that the first PDF opens successfully using the recovered password.
 
-- Keep sensitive documents behind server-side access controls.
-- Use strong, unique passwords where document encryption is required.
-- Use approved modern encryption settings.
-- Distribute passwords separately from the protected document.
-- Review whether downloading sensitive documents is necessary.
-- Avoid storing recovered passwords in screenshots, source control or public reports.
+![Evidence 1.11 - Report 1 opened](./1.11%20patient_record_1_openpdf.png)
 
-## 6. Evidence handling
+**Result:** The first report's password was recovered, and the document was opened successfully.
 
-Retain original screenshots only in the approved private evidence location. Before any external sharing, redact document contents, patient-style identifiers, passwords, tokens and any other sensitive values. Do not commit the original PDFs or extracted document contents to this repository.
+### Report 2 — Hash extraction, password recovery and document access
 
-Return to the [main M4 report](../README.md).
+**Evidence 2.** Extracting the password hash from the second PDF report.
+
+![Evidence 2 - Report 2 hash extraction](./2.%20patient_report_2.pdf%20extracted%20hash.png)
+
+**Evidence 2.1.** Password-recovery result for the second report.
+
+![Evidence 2.1 - Report 2 password recovery](./2.1%20patient_record_2_password.png)
+
+**Evidence 2.11.** Verification that the second PDF opens successfully using the recovered password.
+
+![Evidence 2.11 - Report 2 opened](./2.11%20patient_record_2_openpdf.png)
+
+**Result:** The second report's password was recovered, and the document was opened successfully.
+
+### Report 3 — Initial failure, alternate recovery and document access
+
+**Evidence 3.1.** The initial password-recovery attempt using the NetworkWalks tool did not produce a successful result.
+
+![Evidence 3.1 - Initial recovery attempt failed](./3.1%20patient_record_3_password_cracking_failed_network_walkstool.png)
+
+**Evidence 3.1.** Extracting the password hash from the third PDF report. The original filename includes the additional period after the evidence number.
+
+![Evidence 3.1 - Report 3 hash extraction](./3.1.%20patient_report_3.pdf%20extracted%20hash.png)
+
+**Evidence 3.111.** Using John the Ripper for the subsequent password-recovery attempt, which succeeded.
+
+![Evidence 3.111 - John the Ripper recovery](./3.111%20patient_record_3_password_cracking_using_john%20works.png)
+
+**Evidence 3.1111.** Verification that the third PDF opens successfully using the recovered password.
+
+![Evidence 3.1111 - Report 3 opened](./3.1111%20patient_record_3_openpdf.png)
+
+**Result:** The first recovery attempt was unsuccessful. After extracting the PDF hash, John the Ripper was used successfully, and the third report was opened.
+
+## 4. Consolidated results
+
+| PDF report | Hash extracted | Recovery outcome | Document opened |
+|---|---|---|---|
+| Report 1 | Yes | Successful | Yes |
+| Report 2 | Yes | Successful | Yes |
+| Report 3 | Yes | Initial NetworkWalks tool attempt unsuccessful; subsequent John the Ripper attempt successful | Yes |
+
+**Milestone outcome:** Password recovery and document-access verification were completed for all three supplied PDFs.
+
+## 5. Security analysis
+
+The exercise demonstrates why password-protected documents should not be treated as secure simply because a password prompt is present. If an attacker obtains a copy of an encrypted document, password guessing can take place offline. This means the application hosting the document may not be able to detect or rate-limit those attempts.
+
+The successful recovery of all three document passwords indicates that the password choices or protection strength used in the exercise were insufficient to prevent recovery with the available techniques.
+
+### Potential impact
+
+- Unauthorised access to the contents of protected documents.
+- Exposure of confidential information if the same password practices are used for operational records.
+- Reduced effectiveness of application-level controls when a protected file can be copied and attacked offline.
+- Increased impact when document access is combined with other weaknesses, such as the authentication issue documented in the main report.
+
+### Recommendations
+
+- Keep sensitive documents behind server-side authentication and authorisation controls.
+- Use strong, unique, randomly generated passwords where document encryption is required.
+- Apply modern encryption settings approved by organisational policy.
+- Distribute document passwords through a separate, controlled channel.
+- Avoid reusing passwords across documents, users or systems.
+- Review whether sensitive documents need to be downloadable.
+- Keep recovered passwords and other authentication material out of source control and public evidence.
+
+## 6. Relationship to the final assessment
+
+This milestone supports **Finding F-02 — Weak password protection on PDF reports** in the [main M4 assessment report](../README.md).
+
+The next stage of the exercise examined the document metadata and embedded comments for further information that could lead to exposed resources. That work is documented in [M3 — Critical Data Exposure](../3.%20critical-data-exposure/README.md).
+
+---
+
+[Back to the main M4 report](../README.md)
