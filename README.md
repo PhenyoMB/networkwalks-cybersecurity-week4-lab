@@ -8,7 +8,7 @@
 **Assessment approach:** Black-box web application assessment  
 **Status:** Technical milestones M1–M3 reported complete; M4 documentation
 
-> **Training and evidence-handling notice:** This repository documents an authorised NetworkWalks training exercise. The findings below describe the exercise evidence and must not be interpreted as a claim about a real hospital's production environment. The screenshots in the milestone folders may contain patient-style records, staff/shareholder information, authentication material or other sensitive training data. They are deliberately not embedded in this public-facing report. Review and redact those files, or restrict repository visibility, before sharing the repository publicly.
+> **Training exercise notice:** This report documents a fictional NetworkWalks training scenario. The target, records and findings are exercise material, not claims about a real hospital or real individuals. The tutor has approved sharing the exercise evidence. Screenshots are mapped in the supporting milestone READMEs and are used to substantiate the reported activities.
 
 ---
 
@@ -233,11 +233,13 @@ The exercise reinforces the importance of secure database access, server-side au
 
 ## 9. Evidence Repository
 
-The milestone folders contain the supporting screenshots and technical notes:
+The milestone folders contain the supporting screenshots and technical notes. Each milestone README maps the original screenshot filenames to the corresponding assessment step and explains what each image demonstrates.
 
-- [Reconnaissance evidence](1.%20reconnaissance/README.md)
-- [PDF data-extraction evidence](2.%20data-extraction/README.md)
-- [Critical-data-exposure evidence](3.%20critical-data-exposure/README.md)
+- [Reconnaissance evidence (M1)](1.%20reconnaissance/README.md)
+- [PDF data-extraction and password-recovery evidence (M2)](2.%20data-extraction/README.md)
+- [Critical-data-exposure evidence (M3)](3.%20critical-data-exposure/README.md)
+
+The M2 README includes the complete screenshot sequence for all three PDF reports: hash extraction, password-recovery attempts and successful document-opening verification. The M4 report remains the main entry point, while the milestone READMEs provide the supporting evidence.
 
 ## 10. References
 
