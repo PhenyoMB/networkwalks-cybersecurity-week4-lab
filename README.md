@@ -79,8 +79,6 @@ The assessment followed a black-box workflow informed by the general principles 
 
 Automated tools were used conservatively. WhatWeb and Wafw00f produced inconsistent responses, including a 403 response in one fingerprinting attempt and differing WAF identification results. These observations were treated as evidence of variable request handling, not definitive proof that a particular WAF configuration was effective.
 
-**Nmap port scanning is not claimed in this report**, because no corresponding scan output is included in the repository evidence reviewed for this report.
-
 ## 4. Findings and Proof of Exploitation
 
 The findings below describe the behaviour documented during the training exercise. Sensitive values and operational exploit strings are intentionally omitted from this public report.
@@ -122,9 +120,7 @@ An unauthenticated user could potentially gain access to functionality intended 
 
 **Observation**
 
-The three password-protected exercise PDFs were processed locally. Password hashes were extracted and tested using John the Ripper. The evidence set records a failed attempt against one document using the NetworkWalks tool and a successful recovery using John the Ripper. The user reported completing the milestone and opening all three documents.
-
-The actual passwords are intentionally excluded from this report.
+The three password-protected exercise PDFs were processed locally. Password hashes were extracted and tested using John the Ripper. The evidence set records a failed attempt against one document using the NetworkWalks tool and a successful recovery using John the Ripper. 
 
 **Impact**
 
@@ -142,9 +138,9 @@ Password-protected documents using weak or guessable passwords may be vulnerable
 ### F-03 — Sensitive information exposed through document metadata and a legacy location
 
 **Severity:** Critical  
-**Affected component:** Legacy/old location associated with database-related material  
+**Affected component:** /old location associated with database-related material  
 **Category:** Sensitive information exposure / Inadequate protection of backup material  
-**Evidence:** Critical-data-exposure folder screenshots 1–7. These screenshots should remain private or be redacted before any public release.
+**Evidence:** Critical-data-exposure folder screenshots 1–7. 
 
 **Observation**
 
@@ -223,13 +219,7 @@ The combined chain of weaknesses creates a significant risk. The SQL injection i
 
 ## 7. Limitations
 
-- This report is based on the exercise notes, user-provided results and evidence filenames available in the repository.
-- The exact raw outputs for every command are not reproduced in this README.
-- The repository does not contain a documented Nmap scan, so no port-scan or service-enumeration conclusions are made.
-- The precise mechanism by which the legacy database-related material was exposed should be confirmed against the tutor's evidence before assigning a more specific technical root cause.
 - The risk ratings are qualitative; no CVSS vector or score was calculated.
-- The exercise findings are not an assertion about a real hospital production system.
-- Sensitive source records and credentials are intentionally omitted.
 
 ## 8. Conclusion
 
@@ -248,8 +238,6 @@ The milestone folders contain the supporting screenshots and technical notes:
 - [Reconnaissance evidence](1.%20reconnaissance/README.md)
 - [PDF data-extraction evidence](2.%20data-extraction/README.md)
 - [Critical-data-exposure evidence](3.%20critical-data-exposure/README.md)
-
-**Evidence publication note:** The existing screenshots in the M1–M3 folders have not been verified as safe for public release. Do not publish them unredacted. Redact patient-style details, staff/shareholder information, passwords, session cookies, tokens, database values and sensitive URLs, or keep the repository private.
 
 ## 10. References
 
