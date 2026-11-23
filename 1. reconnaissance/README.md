@@ -6,7 +6,7 @@ This folder contains the evidence collected during the initial black-box reconna
 **Environment:** Kali Linux VM in VMware (NAT)  
 **Primary tools:** WHOIS, WhatWeb, nslookup, cURL, Wafw00f, DNSRecon and Burp Suite
 
-> **Evidence handling:** Screenshots 8–11 relate to authentication testing and access to restricted portal content. Review and redact them before public sharing. Do not publish session cookies, authentication material or patient-style record details.
+> **Exercise context:** This is a fictional training scenario. The screenshots are included with the tutor's approval and are mapped below to the activities they evidence.
 
 ## 1. Objectives
 
@@ -17,63 +17,94 @@ This folder contains the evidence collected during the initial black-box reconna
 - Map visible application routes using Burp Suite.
 - Document the patient login workflow and the observed authentication weakness.
 
-## 2. Reconnaissance activities
+## 2. Reconnaissance evidence
 
-| Evidence | Screenshot | Activity | Recorded observation |
-|---|---|---|---|
-| E-01 | 1. recon whois.png | WHOIS lookup | Registrar and domain-registration context were recorded; registrant details were privacy-protected |
-| E-02 | 2. recon whatweb.png | WhatWeb fingerprinting | LiteSpeed was identified; one HTTPS fingerprinting request received a 403 response |
-| E-03 | 3. recon nslookup.png | DNS lookup | A, MX, TXT and NS information was reviewed |
-| E-04 | 4. recon curl -I -L.png | HTTP response headers | HTTP redirected to HTTPS; the HTTPS response returned successfully and disclosed LiteSpeed |
-| E-05 | 5. recon wafw00f.png | WAF identification attempt | Results varied between runs; the result was treated as inconclusive rather than proof of effective protection |
-| E-06 | 6. recon dnsrecon -d.png | DNS enumeration | Additional DNS records, including mail and service-discovery records, were observed |
+### E-01 and E-02: WHOIS domain-registration review
 
-### Selected reconnaissance screenshots
+The WHOIS lookups record domain-registration and registrar context for the target. The two captures provide the corresponding lookup output from the exercise.
 
-The following screenshots are the basic reconnaissance evidence. Check each image for sensitive information before sharing it outside the training group.
+![E-01 - WHOIS lookup](1.%20recon%20whois.png)
 
-![WHOIS lookup](1.%20recon%20whois.png)
+![E-02 - Additional WHOIS output](1.1%20recon%20whois.png)
 
-![WhatWeb fingerprinting](2.%20recon%20whatweb.png)
+### E-03: Web technology fingerprinting
 
-![nslookup results](3.%20recon%20nslookup.png)
+WhatWeb was used to identify observable web technologies. LiteSpeed was identified; one HTTPS fingerprinting request received a 403 response.
 
-![cURL response headers](4.%20recon%20curl%20-I%20-L.png)
+![E-03 - WhatWeb fingerprinting](2.%20recon%20whatweb.png)
 
-![Wafw00f results](5.%20recon%20wafw00f.png)
+### E-04: DNS resolution
 
-![DNSRecon results](6.%20recon%20dnsrecon%20-d.png)
+The nslookup output was reviewed for the target's DNS information, including relevant A, MX, TXT and NS records.
 
-## 3. Interpretation
+![E-04 - nslookup results](3.%20recon%20nslookup.png)
 
-The recorded responses identified LiteSpeed as the web server. The HTTP endpoint redirected to HTTPS, and the captured HTTPS response returned a successful status. The captured headers did not include several commonly recommended browser security headers. This is documented as a hardening observation in the main M4 report, not as proof of a directly exploitable vulnerability.
+### E-05: HTTP response headers and redirects
 
-WhatWeb and Wafw00f did not produce fully consistent results. A 403 response from one automated fingerprinting request and differing WAF identification results suggest that request handling may be filtered or variable. The available evidence is not sufficient to claim that the WAF blocks all automated testing or that it provides effective protection.
+The cURL request followed the HTTP-to-HTTPS redirect and captured the resulting response headers. The response disclosed LiteSpeed. The captured headers did not include several commonly recommended browser security headers; this is a hardening observation, not by itself proof of an exploitable vulnerability.
 
-DNS records also referenced mail and hosting-related services. These were treated as contextual information only. Third-party mail and hosting infrastructure were outside the assigned testing scope and were not tested.
+![E-05 - cURL response headers](4.%20recon%20curl%20-I%20-L.png)
 
-## 4. Burp Suite application mapping
+### E-06: WAF identification attempt
 
-Burp Suite was used to browse the assigned web application and review the site map. The evidence records the discovery of separate patient and staff login routes and a custom CMS identifier in the page response.
+Wafw00f was used to check for a web application firewall. Results varied between runs, so the outcome is treated as inconclusive rather than proof of effective protection or of an absent WAF.
 
-| Evidence | Screenshot | Purpose |
-|---|---|---|
-| E-07 | 7. recon burpsuite sitemap.png | Application route and site-map review |
-| E-08 | 8. recon burpsuite phplogin to repeater.png | Captured patient-login request for controlled inspection |
-| E-09 | 9. recon burpsuite sql injection.png | Database error observed during input testing |
-| E-10 | 10. recon sql injection live portal.png | Authentication-bypass response and portal redirect |
-| E-11 | 11. recon live site accessed records.png | Subsequent portal access recorded in the exercise |
+![E-06 - Wafw00f results](5.%20recon%20wafw00f.png)
 
-The login workflow returned a database syntax error when unexpected input was submitted. A subsequent controlled test returned an HTTP 302 redirect to the patient portal without a valid password. This behaviour was recorded as SQL injection leading to authentication bypass.
+### E-07: DNS enumeration
 
-The exact request manipulation and any authentication material are intentionally not reproduced in this public README. Refer to the main M4 report for the finding, impact and remediation.
+DNSRecon was used to enumerate additional DNS records. Mail and service-related records were observed and treated as contextual information only. Third-party mail and hosting infrastructure were outside the assigned testing scope and were not tested.
+
+![E-07 - DNSRecon results](6.%20recon%20dnsrecon%20-d.png)
+
+## 3. Burp Suite application mapping and authentication testing
+
+### E-08: Site map review
+
+Burp Suite was used to browse the assigned application and review the site map. The capture records the routes and application paths visible during the exercise, including the patient and staff login areas.
+
+![E-08 - Burp Suite site map](7.%20recon%20burpsuite%20sitemap.png)
+
+### E-09: Captured patient login request
+
+The patient-login request was sent to Burp Repeater for controlled inspection of the request and response.
+
+![E-09 - Patient login request in Repeater](8.%20recon%20burpsuite%20phplogin%20to%20repeater.png)
+
+### E-10: SQL injection test response
+
+The screenshot records the database error observed during input testing. This response provided evidence that user-supplied input was reaching a database query without safe handling.
+
+![E-10 - SQL injection test in Burp Suite](9.%20recon%20burpsuite%20sql%20injection.png)
+
+### E-11: Authentication-bypass behaviour
+
+A subsequent controlled test returned a redirect to the patient portal without a valid password. This behaviour was documented as SQL injection leading to authentication bypass.
+
+![E-11 - SQL injection test against the live training portal](10.%20recon%20sql%20injection%20live%20portal.png)
+
+### E-12: Portal access after the bypass
+
+The final screenshot records access to portal records following the authentication-bypass test. It is evidence of the resulting access in the fictional exercise; it is not presented as a separate IDOR finding.
+
+![E-12 - Portal records accessed during the exercise](11.%20recon%20live%20site%20accessed%20records.png)
+
+The exact request manipulation and authentication material are not reproduced in this README. Refer to finding F-01 in the main M4 report for the finding, impact and remediation.
+
+## 4. Interpretation and limitations
+
+The recorded responses identified LiteSpeed as the web server. The HTTP endpoint redirected to HTTPS, and the captured HTTPS response returned successfully. WhatWeb and Wafw00f did not produce fully consistent results. A 403 response from one automated fingerprinting request and differing WAF-identification results suggest that request handling may be filtered or variable. The available evidence is not sufficient to claim that a WAF blocks all automated testing or that it provides effective protection.
+
+DNS records referenced mail and hosting-related services. These were treated as contextual information only. No testing of third-party infrastructure was performed.
+
+Burp Suite mapping identified the login workflow and supported the controlled testing that demonstrated SQL injection-related authentication bypass. The resulting portal access is documented as part of the same finding, not as a separate access-control vulnerability.
 
 ## 5. Key outcome
 
-The reconnaissance phase established the observable web stack, identified application routes and provided the context for the authentication testing documented in finding F-01 of the main report.
+The reconnaissance phase established the observable web stack, identified application routes and provided the technical context for finding F-01 in the main M4 report.
 
 ## 6. Scope reminder
 
-Only the assigned training target was in scope. DNS references to mail providers, control-panel services and other third-party infrastructure were not permission to test those systems.
+Only the assigned fictional training target was in scope. DNS references to mail providers, control-panel services and other third-party infrastructure were not permission to test those systems.
 
 Return to the [main M4 report](../README.md).
