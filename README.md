@@ -253,4 +253,4 @@ The M2 README includes the complete screenshot sequence for all three PDF report
 
 
 
-![video](https://github.com/PhenyoMB/networkwalks-cybersecurity-week4-lab/blob/829a7b0bac255fc4733e85ae23318510ed617bd5/NetworkWalks-Week4-BlackBox.mp4)
+![image](https://github.com/PhenyoMB/networkwalks-cybersecurity-week4-lab/blob/829a7b0bac255fc4733e85ae23318510ed617bd5/NetworkWalks-Week4-BlackBox.mp4)
