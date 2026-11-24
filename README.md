@@ -255,6 +255,6 @@ The M2 README includes the complete screenshot sequence for all three PDF report
 
 ## 11. Video Walkthrough
 
-[**Watch the NetworkWalks Week 4 Black-Box Assessment video**](https://github.com/PhenyoMB/networkwalks-cybersecurity-week4-lab/blob/main/NetworkWalks-Week4-BlackBox.mp4)
+[![Watch the NetworkWalks Week 4 Black-Box Assessment video on YouTube](https://img.youtube.com/vi/EcpX_bMBOKc/hqdefault.jpg)](https://www.youtube.com/watch?v=EcpX_bMBOKc)
 
-The full video is stored in this repository using Git LFS. GitHub does not provide inline playback for MP4 files committed to a repository README, so use the link above to open the video file.
+*Click the thumbnail to watch the Week 4 black-box assessment walkthrough on YouTube.*
