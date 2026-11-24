@@ -249,3 +249,8 @@ The M2 README includes the complete screenshot sequence for all three PDF report
 - [OWASP Cheat Sheet Series – Cryptographic Storage](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 - [CWE-89: SQL Injection](https://cwe.mitre.org/data/definitions/89.html)
 - [CWE-200: Exposure of Sensitive Information](https://cwe.mitre.org/data/definitions/200.html)
+
+
+
+
+![video](https://github.com/PhenyoMB/networkwalks-cybersecurity-week4-lab/blob/829a7b0bac255fc4733e85ae23318510ed617bd5/NetworkWalks-Week4-BlackBox.mp4)
